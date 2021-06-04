@@ -1,0 +1,48 @@
+@{
+  Layout = "_Layout";
+}
+
+<h1>Welcome to Pierre's Treats & Goodies!</h1>
+
+@using PierresTreats.Models
+
+<main class="row">
+  <div class="col-sm-6 text-center">
+    <h2>Flavors:</h2>
+    @if (@Model["flavor"].Count == 0)
+    {
+      @Html.ActionLink("Add a new flavor", "Create", "Flavor")
+    }
+    else
+    {
+      <ul>
+        @foreach (Flavor flavor in @Model["flavor"])
+        {
+          @Html.ActionLink($"{flavor.Type}", "Details", "Flavor", new {id = flavor.FlavorId})
+          <br>
+        }
+      </ul>
+    }
+  </div>
+
+  <div class="col-sm-6 text-center">
+    <h2>Treats:</h2>
+    @if (@Model["treat"].Count == 0)
+    {
+      @Html.ActionLink("Add a new Treat", "Create", "Treat")
+    }
+    else
+    {
+      <ul>
+        @Html.ActionLink("Add a new Treat", "Create", "Treat", new {id= treat.TreatId})
+        <br>
+      </ul>
+    }
+  </div>
+</main>
+<br>
+<br>
+
+<p id="action">@Html.ActionLink("See all Treats", "Index", "Treat")&nbsp;&nbsp;
+  @Html.ActionLink("See all Flavors", "Index", "Flavor")&nbsp;&nbsp;
+  @Html.ActionLink("Create an account", "Index", "Account")</p>
