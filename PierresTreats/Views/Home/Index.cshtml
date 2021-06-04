@@ -36,7 +36,7 @@
       <ul>
         @foreach (Treat treat in @Model["treat"])
         {
-          @Html.ActionLink("Add a new Treat", "Create", "Treat", new {id= treat.TreatId})
+          @Html.ActionLink($"{treat.Name}", "Details", "Treat", new {id = treat.TreatId})
           <br>
         }
       </ul>
@@ -46,6 +46,8 @@
 <br>
 <br>
 
-<p id="action">@Html.ActionLink("See all Treats", "Index", "Treat")&nbsp;&nbsp;
+<p id="action">
+  @Html.ActionLink("See all Treats", "Index", "Treat")&nbsp;&nbsp;
   @Html.ActionLink("See all Flavors", "Index", "Flavor")&nbsp;&nbsp;
-  @Html.ActionLink("Create an account", "Index", "Account")</p>
+  @Html.ActionLink("Create an account", "Index", "Account")
+  </p>
