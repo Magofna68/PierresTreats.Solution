@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <title>Pierre's Treats!</title>
+  <link rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css'>
+  <link rel="stylesheet" href="~/css/styles.css">
+</head>
+
+<body>
+  <div class="container">
+    <partial>
+      <div id="header">Fortune flavors the <strong>BOLD</strong>.</div>
+      @Html.ActionLink("Log in", "Login", "Account", null, new {@class="btn btn-success"})
+    </partial>
+
+    @RenderBody()
+    <br>
+    @Html.ActionLink("Home", "Index", "Home", null, new { @class="btn btn-primary btn-block" })
+
+    <partial>
+      <div id="footer">Just make a recipe already..</div>
+      @using (Html.BeginForm("LogOff", "Account"))
+      {
+        <input type="submit" class="btn btn-danger " value="Log out" />
+      }
+    </partial>
+
+  </div>
+</body>
+
+</html>
