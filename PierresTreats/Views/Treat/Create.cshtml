@@ -1,0 +1,35 @@
+@{
+  Layout = "_Layout";
+}
+
+@model PierresTreats.Models.Treat
+
+<h4>Add a new Treat:</h4>
+
+@using (Html.BeginForm())
+{
+  @Html.LabelFor(model=>model.Name)
+  @Html.TextBoxFor(model=>model.Name)
+
+  @Html.LabelFor(model=> model.Quantity)
+  @Html.TextBoxFor(model=> model.Quantity)
+
+  @Html.LabelFor(model=> model.Calories)
+  @Html.TextBoxFor(model=> model.Calories)
+
+  <p>
+  @Html.LabelFor(model=>model.Rating): (1-5)
+  @Html.RadioButtonFor(m=>m.Rating, "1")&nbsp;
+  @Html.RadioButtonFor(m=>m.Rating, "2")&nbsp;
+  @Html.RadioButtonFor(m=>m.Rating, "3")&nbsp;
+  @Html.RadioButtonFor(m=>m.Rating, "4")&nbsp;
+  @Html.RadioButtonFor(m=>m.Rating, "5")
+</p>
+
+  @Html.Label("Select Flavor")
+  @Html.DropDownList("FlavorId")
+
+  <input type="submit" value="Add new Treat" class="btn btn-default" />
+}
+<br>
+<p>@Html.ActionLink("Show all Treats", "Index")</p>
