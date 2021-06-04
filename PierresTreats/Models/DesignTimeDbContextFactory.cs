@@ -10,7 +10,7 @@ namespace PierresTreats.Models
     PierresTreatsContext IDesignTimeDbContextFactory<PierresTreatsContext>.CreateDbContext(string[] args)
     {
       IConfigurationRoot configuration = new ConfigurationBuilder()
-        .SetBasePath(Directory.GetCurrectDirectory())
+        // .SetBasePath(Directory.GetCurrentDirectory())
         .AddJsonFile("appsettings.json")
         .Build();
 
