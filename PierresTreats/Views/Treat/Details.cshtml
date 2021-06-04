@@ -1,0 +1,39 @@
+@{
+  Layout = "_Layout";
+}
+
+@model PierresTreats.Models.Treat
+
+<h2>Details about this Treat:</h2>
+<h4>
+  <strong>@Html.DisplayNameFor(model=>model.Name):</strong> @Html.DisplayFor(model=>model.Name)<br><br>
+  <strong>@Html.DisplayNameFor(model=>model.Quantity):</strong> @Html.DisplayFor(model=>model.Quantity)<br><br>
+  <strong>@Html.DisplayNameFor(model=>model.Calories):</strong>
+  @Html.DisplayFor(model=>model.Calories)<br><br>
+  <strong>@Html.DisplayNameFor(model=>model.Rating):</strong> @Html.DisplayFor(model=>model.Rating)
+</h4>
+<br>
+@if (@Model.JoinEntities.Count == 0)
+{
+  <p>This Treat is not tied to any flavor profiles</p>
+}
+else
+{
+  <h4>Flavor profiles associated with this Treat:</h4>
+  <ul>
+  @foreach (var join in Model.JoinEntities)
+    {
+      <li>@join.Flavor.Type</li>
+      @using (Html.BeginForm("DeleteFlavor", "Treat"))
+      {
+        @Html.Hidden("joinId", @join.FlavorTreatId)
+        <input type="submit" value="Delete" />
+      }
+    }
+  </ul>
+}
+
+<p>@Html.ActionLink("Add a Flavor", "AddFlavor", new { id = Model.RecipeId })</p>
+<p>@Html.ActionLink("Back to list", "Index")</p>
+<p>@Html.ActionLink("Edit Treat", "Edit", new { id = Model.RecipeId })</p>
+<p>@Html.ActionLink("Delete Treat", "Delete", new { id = Model.RecipeId })</p>
