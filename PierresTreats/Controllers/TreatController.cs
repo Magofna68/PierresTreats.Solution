@@ -11,11 +11,12 @@ using System.Security.Claims;
 
 namespace PierresTreats.Controllers
 {
+  [Authorize]
   public class TreatController : Controller
   {
     private readonly PierresTreatsContext _db;
     private readonly UserManager<ApplicationUser> _userManager;
-    public TreatController(UserManager<ApplicationUser> userManager, PierresTreats db)
+    public TreatController(UserManager<ApplicationUser> userManager, PierresTreatsContext db)
     {
       _userManager = userManager;
       _db = db;
@@ -34,7 +35,7 @@ namespace PierresTreats.Controllers
       ViewBag.FlavorId = new SelectList(_db.Flavor, "FlavorId", "Name", "Quantity", "Calories", "Rating");
       return View();
     }
-    [Authorize]
+    // [Authorize]
     [HttpPost]
     public async Task<ActionResult> Create(Treat treat, int FlavorId)
     {
@@ -68,7 +69,7 @@ namespace PierresTreats.Controllers
       return View(thisTreat);
     }
 
-    [Authorize]
+    // [Authorize]
     [HttpPost]
     public ActionResult Edit(Treat treat, int FlavorId)
     {
@@ -89,7 +90,7 @@ namespace PierresTreats.Controllers
       return View(thisTreat);
     }
 
-    [Authorize]
+    // [Authorize]
     [HttpPost]
     public ActionResult AddFlavor(Treat treat, int FlavorId)
     {
@@ -107,7 +108,7 @@ namespace PierresTreats.Controllers
       return View(thisTreat);
     }
 
-    [Authorize]
+    // [Authorize]
     [HttpPost, ActionName("Delete")]
     public ActionResult DeleteConfirmed(int id)
     {
@@ -117,7 +118,7 @@ namespace PierresTreats.Controllers
       return RedirectToAction("Index");
     }
 
-    [Authorize]
+    // [Authorize]
     [HttpPost]
     public ActionResult DeleteFlavor(int joinId)
     {
