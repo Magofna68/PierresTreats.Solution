@@ -1,1 +1,21 @@
-@
+@{
+  Layout = "_Layout";
+}
+
+<h2>Account Authentication:</h2>
+<h4>with Identity</h4>
+
+@if (User.Identity.IsAuthenticated)
+{
+  <h2>Hello @User.Identity.Name!</h2>
+
+  <p>@Html.ActionLink("See all Treats", "Index", "Treat")</p>
+  <p>@Html.ActionLink("See all Flavors", "Index", "Flavor")</p>
+  <p>@Html.ActionLink("Add new Flavor", "Create", "Flavor")</p>
+  <p>@Html.ActionLink("Add new Treat", "Create", "Treat")</p>
+}
+else
+{
+  <p>@Html.ActionLink("Register", "Register")</p>
+  <p>@Html.ActionLink("Log in", "Login")</p>
+}
