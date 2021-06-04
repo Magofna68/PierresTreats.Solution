@@ -1,6 +1,6 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Mvc;
-using RecipeBox.Models;
+using PierresTreats.Models;
 using System.Collections.Generic;
 using System.Linq;
 

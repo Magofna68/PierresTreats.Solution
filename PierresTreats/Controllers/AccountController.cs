@@ -1,8 +1,8 @@
+using PierresTreats.ViewModels;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Identity;
 using PierresTreats.Models;
 using System.Threading.Tasks;
-using PierresTreats.ViewModels;
 
 namespace PierresTreats.Controllers
 {
@@ -18,7 +18,7 @@ namespace PierresTreats.Controllers
       _db = db;
     }
 
-    public actionResult Index()
+    public ActionResult Index()
     {
       return View();
     }
