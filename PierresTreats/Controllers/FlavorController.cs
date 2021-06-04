@@ -25,7 +25,7 @@ namespace PierresTreats.Controllers
     {
       return View();
     }
-
+    [Authorize]
     [HttpPost]
     public ActionResult Create(FlavorController flavor)
     {
@@ -48,7 +48,7 @@ namespace PierresTreats.Controllers
       var thisFlavor = _db.Flavor.FirstOrDefault(flavor => flavor.FlavorId == id);
       return View(thisFlavor);
     }
-
+    [Authorize]
     [HttpPost]
     public ActionResult Edit(FlavorController flavor)
     {
@@ -62,7 +62,7 @@ namespace PierresTreats.Controllers
       var thisFlavor = _db.Flavor.FirstOrDefault(flavor => flavor.FlavorId == id);
       return View(thisFlavor);
     }
-
+    [Authorize]
     [HttpPost, ActionName("Delete")]
     public ActionResult DeleteConfirmed(int id)
     {

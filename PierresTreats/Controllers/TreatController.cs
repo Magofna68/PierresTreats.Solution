@@ -28,13 +28,13 @@ namespace PierresTreats.Controllers
       var userTreat = _db.Treat.Where(entry=>entry.User.Id == currentUser.Id).ToList();
       return View(userTreat);
     }
-[   Authorize]
+
     public ActionResult Create()
     {
       ViewBag.FlavorId = new SelectList(_db.Flavor, "FlavorId", "Name", "Quantity", "Calories", "Rating");
       return View();
     }
-
+    [Authorize]
     [HttpPost]
     public async Task<ActionResult> Create(Treat treat, int FlavorId)
     {
@@ -51,7 +51,7 @@ namespace PierresTreats.Controllers
       return RedirectToAction("Index");
     }
 
-    [Authorize]
+    // [Authorize]
     public ActionResult Details(int id)
     {
       var thisTreat = _db.Treat

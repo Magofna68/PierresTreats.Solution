@@ -27,7 +27,7 @@ namespace PierresTreats.Controllers
     {
       return View();
     }
-
+    [Authorize]
     [HttpPost]
     public async Task<ActionResult> Register(RegisterViewModel model)
     {
@@ -47,7 +47,7 @@ namespace PierresTreats.Controllers
     {
       return View();
     }
-
+    [Authorize]
     [HttpPost]
     public async Task<ActionResult> Login(LoginViewModel model)
     {
@@ -61,7 +61,7 @@ namespace PierresTreats.Controllers
         return View();
       }
     }
-
+    [Authorize]
     [HttpPost]
     public async Task<ActionResult> LogOut()
     {
