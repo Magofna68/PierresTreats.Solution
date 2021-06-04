@@ -34,8 +34,11 @@
     else
     {
       <ul>
-        @Html.ActionLink("Add a new Treat", "Create", "Treat", new {id= treat.TreatId})
-        <br>
+        @foreach (Treat treat in @Model["treat"])
+        {
+          @Html.ActionLink("Add a new Treat", "Create", "Treat", new {id= treat.TreatId})
+          <br>
+        }
       </ul>
     }
   </div>

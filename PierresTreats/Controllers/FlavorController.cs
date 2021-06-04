@@ -8,7 +8,7 @@ namespace PierresTreats.Controllers
 {
   public class FlavorController : Controller
   {
-    [Authorize]
+    // [Authorize]
     private readonly PierresTreatsContext _db;
 
     public FlavorController(PierresTreatsContext db)
@@ -16,27 +16,27 @@ namespace PierresTreats.Controllers
       _db = db;
     }
 
-    [AllowAnonymous]
+    // [AllowAnonymous]
     public ActionResult Index()
     {
       List<Flavor> model = _db.Flavor.ToList();
       return View(model);
     }
-    [AllowAnonymous]
+    // [AllowAnonymous]
     public ActionResult Create()
     {
       return View();
     }
     // [Authorize]
     [HttpPost]
-    public ActionResult Create(FlavorController flavor)
+    public ActionResult Create(Flavor flavor)
     {
       _db.Flavor.Add(flavor);
       _db.SaveChanges();
       return RedirectToAction("Index");
     }
 
-    [AllowAnonymous]
+    // [AllowAnonymous]
     public ActionResult Details(int id)
     {
       var thisFlavor = _db.Flavor
@@ -46,7 +46,7 @@ namespace PierresTreats.Controllers
       return View(thisFlavor);
     }
 
-    [AllowAnonymous]
+    // [AllowAnonymous]
     public ActionResult Edit(int id)
     {
       var thisFlavor = _db.Flavor.FirstOrDefault(flavor => flavor.FlavorId == id);

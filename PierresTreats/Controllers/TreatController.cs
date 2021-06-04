@@ -24,7 +24,7 @@ namespace PierresTreats.Controllers
 
     public async Task<ActionResult> Index()
     {
-      var userId = this.User.FindOrDefault(ClaimTypes.NameIdentifier)?.Value;
+      var userId = this.User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
       var currentUser = await _userManager.FindByIdAsync(userId);
       var userTreat = _db.Treat.Where(entry => entry.User.Id == currentUser.Id).ToList();
       return View(userTreat);
@@ -32,7 +32,7 @@ namespace PierresTreats.Controllers
 
     public ActionResult Create()
     {
-      ViewBag.FlavorId = new SelectList(_db.Flavor, "FlavorId", "Name", "Quantity", "Calories", "Rating");
+      ViewBag.FlavorId = new SelectList(_db.Flavor, "FlavorId", "Type");
       return View();
     }
     // [Authorize]
@@ -122,7 +122,7 @@ namespace PierresTreats.Controllers
     [HttpPost]
     public ActionResult DeleteFlavor(int joinId)
     {
-      var joinEntity = _db.FlavorTreat.FirstOrDefault(entry => entry.FlavorTreatId == joinId);
+      var joinEntry = _db.FlavorTreat.FirstOrDefault(entry => entry.FlavorTreatId == joinId);
       _db.FlavorTreat.Remove(joinEntry);
       _db.SaveChanges();
       return RedirectToAction("Index");

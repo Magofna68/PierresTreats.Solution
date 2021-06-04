@@ -2,15 +2,15 @@
   Layout = "_Layout";
 }
 
-@model PierresTreats.Models.Flavor
+@model PierresTreats.Models.Flavor;
 
 <h2>Flavor Details:</h2>
 
 <h3>@Html.DisplayNameFor(model=>model.Type): @Html.DisplayFor(model=>model.Type)</h3>
 
-@if (@Model.joinEntities.Count == 0)
+@if (@Model.JoinEntities.Count == 0)
 {
-  <p>This treat hasnt had a type assigned to it.</p>
+  <p>This flavor hasnt been assigned to a treat.</p>
 }
 else
 {
